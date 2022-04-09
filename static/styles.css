@@ -1,0 +1,50 @@
+body {
+    background-color: white;
+}
+
+.nav-link {
+    color: #52b788;
+    font-size: 1.2rem;
+}
+
+.nav-link:hover {
+    color: #40916c;
+    font-size: 1.2rem;
+}
+
+.nav-pills .nav-link.active {
+    color: white;
+    background-color: #52b788;
+}
+
+.nav-pills .nav-link.active:hover {
+    color: white;
+    background-color: #40916c;
+}
+
+.btn-primary {
+    background-color: #52b788;
+    border-color: #52b788;
+}
+
+.btn-primary:hover {
+    background-color: #40916c;
+    border-color: #40916c;
+}
+
+figure {
+    margin: 16px 40px !important; 
+}
+
+th, td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.color-picker {
+    display: inline-block;
+}
+
+.leaderboard {
+    padding-bottom: 4px !important;
+}
