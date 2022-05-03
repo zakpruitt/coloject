@@ -1,5 +1,6 @@
 from flask import Flask, render_template
-
+from requests import request
+from image import getPrecisePrediction
 app = Flask(__name__)
 
 @app.route('/')
