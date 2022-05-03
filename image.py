@@ -1,18 +1,16 @@
 from imageai.Classification import ImageClassification
-from heapq import heappop, heappush, heapify
 import os
-
 testPics = ['sample1.png', 'sample2.jpg','building.jpg','dog.jpg','flag.jpg','musician.jpg']
 models = ['DenseNet121.h5','InceptionV3.h5','Mobilenet_V2.h5','ResNet50.h5']
 
-
-def getPrecisionPrediction():
+def getPrecisePrediction(imageFileName):
     execution_path = os.getcwd()
     prediction = ImageClassification()
     prediction.setModelTypeAsInceptionV3()
-    prediction.setModelPath(execution_path +'\\model\\'+models[1])
+    prediction.setModelPath(execution_path +'\\model\\'+models[2])
     prediction.loadModel() #Normal speed is default
-    predictions, probabilities = prediction.classifyImage(execution_path +"//images//" + testPics[5], result_count=3)
+    imagePath = execution_path +"//images//" + testPics[5] 
+    predictions, probabilities = prediction.classifyImage(imagePath,result_count=2)
     myPrediction = predictions[0] + " " + str(round(probabilities[0]))
     return myPrediction
     for eachPrediction, eachProbability in zip(predictions, probabilities):
@@ -33,7 +31,7 @@ def getFastPrediction():
 def getPrediction(isPrecise):
     if isPrecise == True:
         print("Precision Prediction")
-        predict = getPrecisionPrediction()
+        predict = getPrecisePrediction()
     else:
         print("Fast Prediction")
         predict = getFastPrediction()
@@ -42,17 +40,15 @@ def getPrediction(isPrecise):
 #getPrediction(isPrecise=True)
 
 def ImageArray():
-    print('List of Images')
-    for picture in testPics:
-        getSinglePrediction(picture)
+    return getSinglePrediction()
 
-def getSinglePrediction(currentPicture):
+def getSinglePrediction():
     execution_path = os.getcwd()
     prediction = ImageClassification()
     prediction.setModelTypeAsInceptionV3()
     prediction.setModelPath(execution_path +'\\model\\'+models[1])
     prediction.loadModel() #Normal speed is default
-    predictions, probabilities = prediction.classifyImage(execution_path +"//images//" + currentPicture, result_count=3)
+    predictions, probabilities = prediction.classifyImage(execution_path +"//images//" + testPics[0], result_count=3)
+    return predictions[0]
     print ('Picture: ' + currentPicture + " is " +predictions[0] + " " + str(round(probabilities[0])))
     
-ImageArray()
