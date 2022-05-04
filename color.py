@@ -39,9 +39,9 @@ def RGB2HEX(color):
     return "#{:02x}{:02x}{:02x}".format(int(color[0]), int(color[1]), int(color[2]))
 
 
-def generate_color_chart(img):
+def generate_color_chart(chart_name, n_color, img):
     image = get_image("./static/temp/" + img.filename)
-    number_of_colors = 10
+    number_of_colors = int(n_color)
     modified_image = image.reshape(image.shape[0]*image.shape[1], 3)
     clf = KMeans(n_clusters=number_of_colors)
     labels = clf.fit_predict(modified_image)
@@ -54,6 +54,6 @@ def generate_color_chart(img):
     rgb_colors = [ordered_colors[i] for i in counts.keys()]
 
     plt.switch_backend('agg')
-    plt.title('Colors Detection ($n=10$)', fontsize=20)
+    plt.title(chart_name, fontsize=20)
     plt.pie(counts.values(), labels=hex_colors, colors=hex_colors)
     plt.savefig("./static/temp/" + img.filename)

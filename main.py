@@ -7,15 +7,19 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == "GET":
-        return render_template('index.html')
+        return render_template('index.html', chart_path="./static/colors.png")
     else:
-        print(request.form["chartNameInput"])
-        print(request.form["maxColorInput"])
-        f = request.files["imageInput"]
-        print(f.filename)
-        f.save("./static/temp/" + f.filename)
-        generate_color_chart(f)
-        return render_template('index.html')
+        # get form data
+        chart_name = request.form["chartNameInput"]
+        n_color = request.form["maxColorInput"]
+        img = request.files["imageInput"]
+
+        # save temp and generate chart
+        img.save("./static/temp/" + img.filename)
+        generate_color_chart(chart_name, n_color, img)
+
+        # load page with chart
+        return render_template('index.html', chart_path="./static/temp/" + img.filename)
 
 
 if __name__ == '__main__':
