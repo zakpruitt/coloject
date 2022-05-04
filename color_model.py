@@ -13,7 +13,7 @@ class Color:
     def create_table(self):
         self.cursor.execute('''
                             CREATE TABLE IF NOT EXISTS color(
-                                id INTEGER PRIMARY KEY,
+                                id TEXT PRIMARY KEY,
                                 hex TEXT NOT NULL,
                                 apperance INTEGER NOT NULL)
                             ''')
@@ -22,7 +22,7 @@ class Color:
         try:
             self.lock.acquire(True)
             self.cursor.execute('''
-                                INSERT OR IGNORE INTO color VALUES(?, ?)
+                                INSERT OR IGNORE INTO color VALUES(?, ?, ?)
                                 ''', color)
             self.conn.commit()
         finally:
@@ -33,7 +33,7 @@ class Color:
             self.lock.acquire(True)
             self.cursor.execute('''
                                 UPDATE color SET apperance = apperance + 1 WHERE hex = ?
-                                ''', hex)
+                                ''', (hex,))
             self.conn.commit()
         finally:
             self.lock.release()
@@ -43,7 +43,7 @@ class Color:
             self.lock.acquire(True)
             self.cursor.execute('''
                                 SELECT * FROM color WHERE hex = ?
-                                ''', hex)
+                                ''', (hex,))
             return self.cursor.fetchone() is not None
         finally:
             self.lock.release()

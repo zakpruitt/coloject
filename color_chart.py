@@ -2,10 +2,14 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import sklearn
+import uuid
 from sklearn.cluster import KMeans
 from collections import Counter
 from skimage.color import rgb2lab, deltaE_cie76
 import cv2
+from color_model import Color
+
+color_db = Color()
 
 plt.style.use('ggplot')
 plt.rcParams['font.family'] = 'sans-serif'
@@ -53,7 +57,13 @@ def generate_color_chart(chart_name, n_color, img):
     hex_colors = [RGB2HEX(ordered_colors[i]) for i in counts.keys()]
     rgb_colors = [ordered_colors[i] for i in counts.keys()]
     
-    print(hex_colors)
+    for hex in hex_colors:
+        exists = color_db.exists(hex)
+        if not exists:
+            color = (str(uuid.uuid4()), hex, 1)
+            color_db.insert_color(color)
+        else:
+            color_db.increment_apperance(hex)
 
     plt.switch_backend('agg')
     plt.title(chart_name, fontsize=20)
