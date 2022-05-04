@@ -36,29 +36,32 @@
                 </li>
             </ul>
         </header>
-        
+
         <div class="row mt-5">
             <div class="col-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center mb-4">Select your image here!</h5>
-                        <div class="mb-3">
-                            <label for="chartNameInput" class="form-label">Enter your chart's name</label>
-                            <input class="form-control" type="text" name="chartNameInput" id="chartNameInput">
-                        </div>
-                        <div class="mb-4">
-                            <label for="imageInput" class="form-label">Select the max amount of colors to parse</label>
-                            <select class="form-select" name="maxColorInput" id="maxColorInput">
-                                <option value="10" selected>10</option>
-                                <option value="5">5</option>
-                                <option value="15">15</option>
-                            </select>
-                        </div>
-                        <div class="mb-4">
-                            <label for="imageInput" class="form-label">Input image to parse colors from</label>
-                            <input class="form-control" type="file" name="imageInput" id="imageInput">
-                        </div>
-                        <a href="#" class="btn btn-primary float-end">Generate Chart</a>
+                        <form method="post" enctype="multipart/form-data">
+                            <h5 class="card-title text-center mb-4">Select your image here!</h5>
+                            <div class="mb-3">
+                                <label for="chartNameInput" class="form-label">Enter your chart's name</label>
+                                <input class="form-control" type="text" name="chartNameInput" id="chartNameInput">
+                            </div>
+                            <div class="mb-4">
+                                <label for="imageInput" class="form-label">Select the max amount of colors to
+                                    parse</label>
+                                <select class="form-select" name="maxColorInput" id="maxColorInput">
+                                    <option value="10" selected>10</option>
+                                    <option value="5">5</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="imageInput" class="form-label">Input image to parse colors from</label>
+                                <input class="form-control" type="file" name="imageInput" id="imageInput">
+                            </div>
+                            <button href="#" class="btn btn-primary float-end">Generate Chart</button>
+                        </form>
                     </div>
                 </div>
                 <div class="card mt-3">
@@ -66,50 +69,55 @@
                         <h5 class="card-title text-center mb-2">Color Leaderboard</h5>
                         <table class="table text-center">
                             <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Hex Code</th>
-                                <th scope="col">Color</th>
-                              </tr>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Hex Code</th>
+                                    <th scope="col">Color</th>
+                                </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <th scope="row">1</th>
-                                <td>#966B9D</td>
-                                <td>
-                                    <input type="color" height="100" class="form-control color-picker form-control-color" value="#966B9D">
-                                </td>
-                              </tr>
-                              <tr>
-                                <th scope="row">2</th>
-                                <td>#C98686</td>
-                                <td>
-                                    <input type="color" height="100" class="form-control color-picker form-control-color" value="#C98686">
-                                </td>
-                              </tr>
-                              <tr>
-                                <th scope="row">3</th>
-                                <td>#F2B880</td>
-                                <td>
-                                    <input type="color" height="100" class="form-control color-picker form-control-color" value="#F2B880">
-                                </td>
-                              </tr>
-                              <tr>
-                                <th scope="row">4</th>
-                                <td>#FFF4EC</td>
-                                <td>
-                                    <input type="color" height="100" class="form-control color-picker form-control-color" value="#FFF4EC">
-                                </td>
-                              </tr>
-                              <tr>
-                                <th scope="row">5</th>
-                                <td>#E7CFBC</td>
-                                <td>
-                                    <input type="color" height="100" class="form-control color-picker form-control-color" value="#E7CFBC">
-                                </td>
-                              </tr>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>#966B9D</td>
+                                    <td>
+                                        <input type="color" height="100"
+                                            class="form-control color-picker form-control-color" value="#966B9D">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>#C98686</td>
+                                    <td>
+                                        <input type="color" height="100"
+                                            class="form-control color-picker form-control-color" value="#C98686">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>#F2B880</td>
+                                    <td>
+                                        <input type="color" height="100"
+                                            class="form-control color-picker form-control-color" value="#F2B880">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>#FFF4EC</td>
+                                    <td>
+                                        <input type="color" height="100"
+                                            class="form-control color-picker form-control-color" value="#FFF4EC">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td>#E7CFBC</td>
+                                    <td>
+                                        <input type="color" height="100"
+                                            class="form-control color-picker form-control-color" value="#E7CFBC">
+                                    </td>
+                                </tr>
                             </tbody>
-                          </table>
+                        </table>
                     </div>
                 </div>
             </div>

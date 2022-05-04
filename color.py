@@ -40,7 +40,7 @@ def RGB2HEX(color):
 
 
 if __name__ == "__main__":
-    image = get_image('./sample1.png')
+    image = get_image('./sample2.png')
     number_of_colors = 10
     modified_image = image.reshape(image.shape[0]*image.shape[1], 3)
     clf = KMeans(n_clusters=number_of_colors)
