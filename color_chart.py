@@ -40,7 +40,7 @@ def RGB2HEX(color):
 
 
 def generate_color_chart(chart_name, n_color, img):
-    image = get_image("./static/temp/" + img.filename)
+    image = get_image("./data/temp/" + img.filename)
     number_of_colors = int(n_color)
     modified_image = image.reshape(image.shape[0]*image.shape[1], 3)
     clf = KMeans(n_clusters=number_of_colors)
@@ -58,4 +58,4 @@ def generate_color_chart(chart_name, n_color, img):
     plt.switch_backend('agg')
     plt.title(chart_name, fontsize=20)
     plt.pie(counts.values(), labels=hex_colors, colors=hex_colors)
-    plt.savefig("./static/temp/" + img.filename)
+    plt.savefig("./data/temp/" + img.filename)
