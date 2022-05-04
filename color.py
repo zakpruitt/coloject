@@ -52,6 +52,8 @@ def generate_color_chart(chart_name, n_color, img):
     ordered_colors = [center_colors[i] for i in counts.keys()]
     hex_colors = [RGB2HEX(ordered_colors[i]) for i in counts.keys()]
     rgb_colors = [ordered_colors[i] for i in counts.keys()]
+    
+    print(hex_colors)
 
     plt.switch_backend('agg')
     plt.title(chart_name, fontsize=20)

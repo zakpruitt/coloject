@@ -1,5 +1,7 @@
+import os
 from flask import Flask, render_template, request
 from color import generate_color_chart
+
 
 app = Flask(__name__)
 
@@ -22,5 +24,11 @@ def index():
         return render_template('index.html', chart_path="./static/temp/" + img.filename)
 
 
+def empty_temp():
+    for filename in os.listdir("./static/temp"):
+        os.remove("./static/temp/" + filename)
+
+
 if __name__ == '__main__':
+    empty_temp()
     app.run(debug=True)
