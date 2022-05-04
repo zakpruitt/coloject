@@ -47,3 +47,13 @@ class Color:
             return self.cursor.fetchone() is not None
         finally:
             self.lock.release()
+
+    def get_top_colors(self):
+        try:
+            self.lock.acquire(True)
+            self.cursor.execute('''
+                                SELECT hex, apperance FROM color ORDER BY apperance DESC LIMIT 5
+                                ''')
+            return self.cursor.fetchall()
+        finally:
+            self.lock.release()

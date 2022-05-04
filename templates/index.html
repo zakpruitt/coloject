@@ -70,52 +70,22 @@
                         <table class="table text-center">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col">Appr. #</th>
                                     <th scope="col">Hex Code</th>
                                     <th scope="col">Color</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                {% for color in top_colors %}
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>#966B9D</td>
+                                    <th scope="row">{{ color[1] }}</th>
+                                    <td>{{ color[0] }}</td>
                                     <td>
                                         <input type="color" height="100"
-                                            class="form-control color-picker form-control-color" value="#966B9D">
+                                            class="form-control color-picker form-control-color" value="{{ color[0] }}">
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>#C98686</td>
-                                    <td>
-                                        <input type="color" height="100"
-                                            class="form-control color-picker form-control-color" value="#C98686">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>#F2B880</td>
-                                    <td>
-                                        <input type="color" height="100"
-                                            class="form-control color-picker form-control-color" value="#F2B880">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>#FFF4EC</td>
-                                    <td>
-                                        <input type="color" height="100"
-                                            class="form-control color-picker form-control-color" value="#FFF4EC">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>#E7CFBC</td>
-                                    <td>
-                                        <input type="color" height="100"
-                                            class="form-control color-picker form-control-color" value="#E7CFBC">
-                                    </td>
-                                </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>
