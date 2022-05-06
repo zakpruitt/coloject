@@ -32,6 +32,6 @@ The Python libraries coloject relies on are as follows:
 * imageai
 
 ## Contributors
-Zak Pruitt - Color Recognition, Back-End, and Deliverables.
-Vincenet Parsons - Color Recognition, Front-End, and Deliverables.
+Zak Pruitt - Color Recognition, Back-End, and Deliverables. <br>
+Vincenet Parsons - Color Recognition, Front-End, and Deliverables. <br>
 Yosep Almazade - Image Recognition, Object Recognition, and Deliverables.
