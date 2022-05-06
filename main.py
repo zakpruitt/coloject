@@ -1,10 +1,14 @@
+import json
 import os
 from flask import Flask, render_template, request
-from color_chart import generate_color_chart
+from importlib_metadata import distribution
+from matplotlib import colors
+from color_chart import generate_color_chart, get_colors, get_distribution
 from color_model import Color
 
 app = Flask(__name__)
 color_db = Color()
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -23,9 +27,33 @@ def index():
         # save temp and generate chart
         img.save("./static/temp/" + img.filename)
         generate_color_chart(chart_name, n_color, img)
-    
+
         # load page with chart
         return render_template('index.html', chart_path="./static/temp/" + img.filename, top_colors=top_colors)
+
+
+@app.route('/api/colors', methods=['POST'])
+def generate_color_list():
+    img = request.files["imageInput"]
+    n_color = request.form["maxColorInput"]
+
+     # save temp and generate chart
+    img.save("./static/temp/" + img.filename)
+    colors = get_colors(n_color, img)
+
+    return json.dumps(colors)
+
+
+@app.route('/api/distribution', methods=['POST'])
+def generate_distribution_list():
+    img = request.files["imageInput"]
+    n_color = request.form["maxColorInput"]
+
+     # save temp and generate chart
+    img.save("./static/temp/" + img.filename)
+    distribution = get_distribution(n_color, img)
+
+    return json.dumps(list(distribution))
 
 
 def empty_temp():

@@ -57,7 +57,7 @@ def generate_color_chart(chart_name, n_color, img):
     ordered_colors = [center_colors[i] for i in counts.keys()]
     hex_colors = [RGB2HEX(ordered_colors[i]) for i in counts.keys()]
     rgb_colors = [ordered_colors[i] for i in counts.keys()]
-    
+
     for hex in hex_colors:
         exists = color_db.exists(hex)
         if not exists:
@@ -70,3 +70,39 @@ def generate_color_chart(chart_name, n_color, img):
     plt.title(chart_name, fontsize=20)
     plt.pie(counts.values(), labels=hex_colors, colors=hex_colors)
     plt.savefig(path)
+
+
+def get_colors(n_color, img):
+    path = "./static/temp/" + img.filename
+    image = get_image(path)
+    number_of_colors = int(n_color)
+    modified_image = image.reshape(image.shape[0]*image.shape[1], 3)
+    clf = KMeans(n_clusters=number_of_colors)
+    labels = clf.fit_predict(modified_image)
+
+    counts = Counter(labels)
+
+    center_colors = clf.cluster_centers_
+    ordered_colors = [center_colors[i] for i in counts.keys()]
+    hex_colors = [RGB2HEX(ordered_colors[i]) for i in counts.keys()]
+    rgb_colors = [ordered_colors[i] for i in counts.keys()]
+
+    return hex_colors
+
+
+def get_distribution(n_color, img):
+    path = "./static/temp/" + img.filename
+    image = get_image(path)
+    number_of_colors = int(n_color)
+    modified_image = image.reshape(image.shape[0]*image.shape[1], 3)
+    clf = KMeans(n_clusters=number_of_colors)
+    labels = clf.fit_predict(modified_image)
+
+    counts = Counter(labels)
+
+    center_colors = clf.cluster_centers_
+    ordered_colors = [center_colors[i] for i in counts.keys()]
+    hex_colors = [RGB2HEX(ordered_colors[i]) for i in counts.keys()]
+    rgb_colors = [ordered_colors[i] for i in counts.keys()]
+
+    return counts.values()
