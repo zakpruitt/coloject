@@ -14,12 +14,12 @@ def getPrecisePrediction(imageFileName):
     imagePath = execution_path +"//image-proc//images//" + imageFileName 
     predictions, probabilities = prediction.classifyImage(imagePath,result_count=2)
     myPrediction = predictions[0] + " " + str(round(probabilities[0]))
-    #print('////////////////////////////////////////')
+    print('////////////////////////////////////////')
     #print(myPrediction)
-    #print(imageFileName)
-    #for eachPrediction, eachProbability in zip(predictions, probabilities):
-    #    print(eachPrediction , " : " , eachProbability)
-    #print('////////////////////////////////////////')
+    print(imageFileName)
+    for eachPrediction, eachProbability in zip(predictions, probabilities):
+        print(eachPrediction , " : " , eachProbability)
+    print('////////////////////////////////////////')
     return myPrediction
 
 
@@ -31,12 +31,12 @@ def getFastPrediction(imageFileName):
     prediction.loadModel() #Default is Normal. We have other speeds available. "Faster" is available tho it is not very accurate
     predictions, probabilities = prediction.classifyImage(execution_path +"//image-proc//images//" + imageFileName, result_count=2)
     myPrediction = predictions[0] + " " + str(round(probabilities[0]))
-    #print('////////////////////////////////////////')
+    print('////////////////////////////////////////')
     #print(myPrediction)
-    #print(imageFileName)
-    #for eachPrediction, eachProbability in zip(predictions, probabilities):
-        #print(eachPrediction , "  : " , eachProbability)
-    #print('////////////////////////////////////////')
+    print(imageFileName)
+    for eachPrediction, eachProbability in zip(predictions, probabilities):
+        print(eachPrediction , "  : " , eachProbability)
+    print('////////////////////////////////////////')
     return myPrediction
 
 def getPrediction(isPrecise):
@@ -63,5 +63,5 @@ def getSinglePrediction():
     return predictions[0]
     print ('Picture: ' + currentPicture + " is " +predictions[0] + " " + str(round(probabilities[0])))
 
-#for image in testPics:
-    #getPrecisePrediction(image)
+for image in testPics:
+    getPrecisePrediction(image)

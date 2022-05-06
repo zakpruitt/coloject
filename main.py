@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, request
 from color_chart import generate_color_chart
 from color_model import Color
+from image import getPrecisePrediction
 
 app = Flask(__name__)
 color_db = Color()
@@ -23,7 +24,9 @@ def index():
         # save temp and generate chart
         img.save("./static/temp/" + img.filename)
         generate_color_chart(chart_name, n_color, img)
-    
+        output = getPrecisePrediction("./static/temp/" + img.filename)
+        print(output)
+
         # load page with chart
         return render_template('index.html', chart_path="./static/temp/" + img.filename, top_colors=top_colors)
 
