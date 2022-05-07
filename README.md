@@ -15,6 +15,12 @@ Below is a sample API request to recieve hexcodes in JSON.
 
 ![coloject Sample API](/static/readme-3.png "coloject Sample API")
 
+Below are two samples of the image processing and object detection features.
+
+![coloject Sample Dog](/static/readme-4.png "coloject Sample Dog")
+
+![coloject Sample Car](/static/readme-5.png "coloject Sample Car")
+
 ## Dependencies
 coloject relies on Python 3.7 to function. Particularly, Python 3.7 for the image processing. 
 
